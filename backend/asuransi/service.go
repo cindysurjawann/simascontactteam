@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 )
 
 type Service interface {
@@ -32,14 +32,14 @@ func (s *service) GetAsuransi() ([]model.Asuransi, int, error) {
 
 func (s *service) CreateAsuransi(data AsuransiRequest) (model.Asuransi, int, error) {
 	Insurance := model.Asuransi{
-		Judul: data.Judul,
-		Premi: data.Premi,
+		Judul:             data.Judul,
+		Premi:             data.Premi,
 		UangPertanggungan: data.UangPertanggungan,
-		Deskripsi: data.Deskripsi,
-		Syarat: data.Syarat,
-		Foto: data.Foto,
+		Deskripsi:         data.Deskripsi,
+		Syarat:            data.Syarat,
+		Foto:              data.Foto,
 	}
-	
+
 	res, err := s.repo.CreateAsuransi(Insurance)
 	if err != nil {
 		return model.Asuransi{}, http.StatusBadRequest, err

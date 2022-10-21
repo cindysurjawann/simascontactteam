@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -28,7 +28,7 @@ func TestGetUserService(t *testing.T) {
 	assert.Nil(t, res)
 }
 
-func TestGetUserReqService(t *testing.T)  {
+func TestGetUserReqService(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	service := NewService(repo)
@@ -44,7 +44,7 @@ func TestGetUserReqService(t *testing.T)  {
 	req = GetUserRequest{
 		Username: "cindo",
 	}
-	
+
 	var User model.User
 	res, status, err = service.GetUserReq(req)
 	assert.Error(t, err)
@@ -52,15 +52,15 @@ func TestGetUserReqService(t *testing.T)  {
 	assert.Equal(t, res, User)
 }
 
-func TestUpdateUserService(t *testing.T){
+func TestUpdateUserService(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	service := NewService(repo)
 
 	req := UpdateUserRequest{
 		Email: "tes",
-		Role: 2,
-		Name: "tes",
+		Role:  2,
+		Name:  "tes",
 	}
 
 	res, status, err := service.UpdateUser(req, "cindu")
@@ -72,10 +72,10 @@ func TestUpdateUserService(t *testing.T){
 	assert.Error(t, err)
 	assert.Equal(t, http.StatusInternalServerError, status)
 	assert.NotNil(t, res)
-	
+
 }
 
-func TestDeleteService(t *testing.T){
+func TestDeleteService(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	service := NewService(repo)

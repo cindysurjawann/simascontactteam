@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

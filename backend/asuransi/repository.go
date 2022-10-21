@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"gorm.io/gorm"
 )
 
@@ -22,7 +22,7 @@ func NewRepository(db *gorm.DB) *repository {
 	return &repository{db}
 }
 
-func (r *repository) CreateAsuransi(Asuransi model.Asuransi) (model.Asuransi, error){
+func (r *repository) CreateAsuransi(Asuransi model.Asuransi) (model.Asuransi, error) {
 	res := r.db.Create(&Asuransi)
 	if res.Error != nil {
 		return model.Asuransi{}, res.Error

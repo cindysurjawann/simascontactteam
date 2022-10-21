@@ -3,7 +3,7 @@ package infoPromo
 import (
 	"net/http"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 )
 
 type Service interface {
@@ -20,17 +20,17 @@ func NewService(repo PromoRepository) *service {
 	return &service{repo}
 }
 
-func (s *service) GetInfos() ([]model.InfoPromo, int, error){
-	infos, err :=  s.repo.GetInfos()
-	if err != nil{
+func (s *service) GetInfos() ([]model.InfoPromo, int, error) {
+	infos, err := s.repo.GetInfos()
+	if err != nil {
 		return nil, http.StatusInternalServerError, err
 	}
 	return infos, http.StatusOK, nil
 }
 
-func (s *service) GetRecentInfos() ([]model.InfoPromo, int, error){
-	infos, err :=  s.repo.GetRecentInfos()
-	if err != nil{
+func (s *service) GetRecentInfos() ([]model.InfoPromo, int, error) {
+	infos, err := s.repo.GetRecentInfos()
+	if err != nil {
 		return nil, http.StatusInternalServerError, err
 	}
 	return infos, http.StatusOK, nil
@@ -38,14 +38,14 @@ func (s *service) GetRecentInfos() ([]model.InfoPromo, int, error){
 
 func (s *service) AddInfo(data InfoRequest) (model.InfoPromo, int, error) {
 	Info := model.InfoPromo{
-		Judul: data.Judul,
-		Kategori: data.Kategori,
+		Judul:     data.Judul,
+		Kategori:  data.Kategori,
 		Startdate: data.Startdate,
-		Enddate: data.Enddate,
+		Enddate:   data.Enddate,
 		Kodepromo: data.Kodepromo,
-		Foto : data.Foto,
+		Foto:      data.Foto,
 		Deskripsi: data.Deskripsi,
-		Syarat: data.Syarat,
+		Syarat:    data.Syarat,
 	}
 
 	res, err := s.repo.AddInfo(Info)
@@ -54,4 +54,3 @@ func (s *service) AddInfo(data InfoRequest) (model.InfoPromo, int, error) {
 	}
 	return res, http.StatusOK, nil
 }
-

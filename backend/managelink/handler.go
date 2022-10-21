@@ -3,7 +3,7 @@ package managelink
 import (
 	"net/http"
 
-	"github.com/bagasalim/simas/custom"
+	"github.com/cindysurjawann/simascontactteam/custom"
 	"github.com/gin-gonic/gin"
 )
 
@@ -39,7 +39,6 @@ func (h *Handler) GetLink(c *gin.Context) {
 }
 
 func (h *Handler) UpdateLink(c *gin.Context) {
-	
 
 	var req UpdateLinkRequest
 	linktype := c.Query("linktype")

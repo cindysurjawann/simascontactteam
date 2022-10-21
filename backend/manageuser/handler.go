@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bagasalim/simas/custom"
+	"github.com/cindysurjawann/simascontactteam/custom"
 	"github.com/gin-gonic/gin"
 )
 
@@ -55,7 +55,6 @@ func (h *Handler) GetUserReq(c *gin.Context) {
 }
 
 func (h *Handler) UpdateUser(c *gin.Context) {
-	
 
 	var req UpdateUserRequest
 	username := c.Query("username")
@@ -77,8 +76,8 @@ func (h *Handler) UpdateUser(c *gin.Context) {
 
 	reqFix := UpdateUserRequest{
 		Email: req.Email,
-		Role: req.Role,
-		Name: req.Name,
+		Role:  req.Role,
+		Name:  req.Name,
 	}
 	user, status, err := h.Service.UpdateUser(reqFix, username)
 	if err != nil {

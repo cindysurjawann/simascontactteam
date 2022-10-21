@@ -3,7 +3,7 @@ package manageuser
 import (
 	"testing"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"github.com/glebarez/sqlite"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/crypto/bcrypt"
@@ -30,7 +30,7 @@ func newTestDB(t *testing.T) *gorm.DB {
 	return db
 }
 
-func TestGetUserRepo(t *testing.T){
+func TestGetUserRepo(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 
@@ -46,7 +46,7 @@ func TestGetUserRepo(t *testing.T){
 	assert.Nil(t, res)
 }
 
-func TestGetUserReqRepo(t *testing.T){
+func TestGetUserReqRepo(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 
@@ -66,18 +66,18 @@ func TestGetUserReqRepo(t *testing.T){
 	assert.Equal(t, res, User)
 }
 
-func TestUpdateUserRepo(t *testing.T){
+func TestUpdateUserRepo(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 
 	var User model.User
 	user := model.User{
 		Email: "tes",
-		Role: 2,
-		Name: "tes",
+		Role:  2,
+		Name:  "tes",
 	}
-	
-	res, err:= repo.UpdateUser(user, "cindu")
+
+	res, err := repo.UpdateUser(user, "cindu")
 	assert.NoError(t, err)
 	assert.NotNil(t, res)
 
@@ -86,7 +86,7 @@ func TestUpdateUserRepo(t *testing.T){
 	assert.Equal(t, res, User)
 }
 
-func TestDeleteRepo(t *testing.T){
+func TestDeleteRepo(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	var User model.User

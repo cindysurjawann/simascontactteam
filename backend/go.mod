@@ -1,4 +1,4 @@
-module github.com/bagasalim/simas
+module github.com/cindysurjawann/simascontactteam
 
 go 1.19
 

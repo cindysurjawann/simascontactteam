@@ -3,7 +3,7 @@ package infoPromo
 import (
 	"net/http"
 
-	"github.com/bagasalim/simas/custom"
+	"github.com/cindysurjawann/simascontactteam/custom"
 	"github.com/gin-gonic/gin"
 )
 
@@ -43,7 +43,7 @@ func (h *Handler) GetRecentInfos(c *gin.Context) {
 	})
 }
 
-func (h *Handler) AddInfo(c *gin.Context)  {
+func (h *Handler) AddInfo(c *gin.Context) {
 	var req InfoRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		messageErr := custom.ParseError(err)

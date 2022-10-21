@@ -1,13 +1,13 @@
 package api
 
 import (
-	"github.com/bagasalim/simas/asuransi"
-	"github.com/bagasalim/simas/auth"
-	"github.com/bagasalim/simas/custom"
-	"github.com/bagasalim/simas/infoPromo"
-	"github.com/bagasalim/simas/managelink"
-	"github.com/bagasalim/simas/manageuser"
-	"github.com/bagasalim/simas/zoomhistory"
+	"github.com/cindysurjawann/simascontactteam/asuransi"
+	"github.com/cindysurjawann/simascontactteam/auth"
+	"github.com/cindysurjawann/simascontactteam/custom"
+	"github.com/cindysurjawann/simascontactteam/infoPromo"
+	"github.com/cindysurjawann/simascontactteam/managelink"
+	"github.com/cindysurjawann/simascontactteam/manageuser"
+	"github.com/cindysurjawann/simascontactteam/zoomhistory"
 	"github.com/gin-contrib/cors"
 )
 
@@ -51,7 +51,7 @@ func (s *server) SetupRouter() {
 	csRoute.GET("/getpromos", infoPromoHandler.GetInfos)
 	s.Router.GET("/getrecentpromos", infoPromoHandler.GetRecentInfos)
 	s.Router.POST("/postinfopromo", infoPromoHandler.AddInfo)
-	
+
 	adminRoute := authRoute.Group("")
 	adminRoute.Use(middleware.IsAdmin)
 	asuransiRepo := asuransi.NewRepository(s.DB)

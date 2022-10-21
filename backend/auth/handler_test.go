@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bagasalim/simas/custom"
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/custom"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/crypto/bcrypt"
@@ -20,7 +20,7 @@ const (
 	login           = "/login"
 	createuser      = "/create-user"
 	updateLastLogin = "/updatelastlogin"
-	SendOTP			= "/send-otp"
+	SendOTP         = "/send-otp"
 )
 
 type responseLoginData struct {
@@ -42,6 +42,7 @@ type responseErrorValidation struct {
 type responseError struct {
 	Message string `json:"message"`
 }
+
 func initialRepoAuth(t *testing.T) *Handler {
 	db := newTestDB(t)
 	repoUser := NewRepository(db)
@@ -59,13 +60,12 @@ func initialRepo(t *testing.T) *Handler {
 	return handler
 }
 
-
 type ResponseMessage struct {
 	Message string
 }
 
 func getToken(t *testing.T) string {
-	os.Setenv("testing","y")
+	os.Setenv("testing", "y")
 	// getOtp(t)
 	handler := initialRepoAuth(t)
 	gin.SetMode(gin.ReleaseMode)
@@ -82,7 +82,7 @@ func getToken(t *testing.T) string {
 	req, _ = http.NewRequest("POST", "/login", strings.NewReader(payload))
 	req.Header.Set("Content-Type", "application/json; charset=UTF-8")
 	w = httptest.NewRecorder()
-	
+
 	data := resposeLogin{}
 	r.ServeHTTP(w, req)
 	json.Unmarshal(w.Body.Bytes(), &data)
@@ -95,7 +95,7 @@ func TestLogin(t *testing.T) {
 		Data  map[string]any `json:"data"`
 		Token string         `json:"token"`
 	}
-	os.Setenv("testing","y")
+	os.Setenv("testing", "y")
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	passwordHash, _ := bcrypt.GenerateFromPassword([]byte("123456"), bcrypt.DefaultCost)
@@ -132,7 +132,6 @@ func TestLogin(t *testing.T) {
 	r.ServeHTTP(w, req)
 	assert.Equal(t, http.StatusUnauthorized, w.Code)
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &errorMessage1))
-	
 
 	//validation
 	payload = ``
@@ -146,7 +145,6 @@ func TestLogin(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, w.Code)
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &errValid))
 
-	
 	//validation otp
 	payload = `{"username": "remasertu", "password":"123456","code":"12345"}`
 	req, _ = http.NewRequest("POST", login, strings.NewReader(payload))
@@ -209,7 +207,7 @@ func TestCreateUser(t *testing.T) {
 	assert.NotNil(t, req)
 	w = httptest.NewRecorder()
 	r.ServeHTTP(w, req)
-	
+
 	var errValid responseErrorValidation
 	assert.Equal(t, http.StatusBadRequest, w.Code)
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &errValid))
@@ -259,8 +257,8 @@ func TestUpdateLastLoginHandler(t *testing.T) {
 	assert.Equal(t, 400, w.Code)
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &responseMessage))
 }
-func TestSendOTP(t *testing.T){
-	os.Setenv("testing","y")
+func TestSendOTP(t *testing.T) {
+	os.Setenv("testing", "y")
 	handler := initialRepo(t)
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
@@ -292,7 +290,7 @@ func TestSendOTP(t *testing.T){
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &errMes))
 
 	//fail send message
-	os.Setenv("testing","n")
+	os.Setenv("testing", "n")
 	payload = `{"username": "cindu"}`
 	req, _ = http.NewRequest("POST", SendOTP, strings.NewReader(payload))
 	w = httptest.NewRecorder()

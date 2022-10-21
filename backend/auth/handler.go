@@ -3,8 +3,8 @@ package auth
 import (
 	"net/http"
 
-	"github.com/bagasalim/simas/custom"
-	_ "github.com/bagasalim/simas/custom"
+	"github.com/cindysurjawann/simascontactteam/custom"
+	_ "github.com/cindysurjawann/simascontactteam/custom"
 	"github.com/gin-gonic/gin"
 )
 
@@ -80,8 +80,8 @@ func (h *Handler) Login(c *gin.Context) {
 	return
 }
 
-func (h *Handler) SendOTP(c *gin.Context){
-	
+func (h *Handler) SendOTP(c *gin.Context) {
+
 	var req SendOTPRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		messageErr := custom.ParseError(err)
@@ -91,24 +91,24 @@ func (h *Handler) SendOTP(c *gin.Context){
 		c.JSON(http.StatusBadRequest, gin.H{"error": messageErr})
 		return
 	}
-	token, email,  status, err := h.Service.SetOtp(req.Username)
-	if err != nil{
+	token, email, status, err := h.Service.SetOtp(req.Username)
+	if err != nil {
 		mes := err.Error()
-		if mes == "Username not found"{
+		if mes == "Username not found" {
 			mes = "Fail to send otp"
 		}
 		c.JSON(status, gin.H{
-			"message":mes,
+			"message": mes,
 		})
-		return 
+		return
 	}
-    to := []string{email}
-    // cc := []string{}
-    subject := "Simas Contact OTP Kode"
-    message := "OTP Kode:"+token+"<br/> Kode berlaku hanya 5 menit"
-	err = custom.SendEmail2(to, subject,message, "text/html")
+	to := []string{email}
+	// cc := []string{}
+	subject := "Simas Contact OTP Kode"
+	message := "OTP Kode:" + token + "<br/> Kode berlaku hanya 5 menit"
+	err = custom.SendEmail2(to, subject, message, "text/html")
 	// err = custom.SendMail(to, cc, subject, message)
-	resp :="sukses"
+	resp := "sukses"
 	if err != nil {
 		c.JSON(500, gin.H{
 			"message": err.Error(),
@@ -118,10 +118,9 @@ func (h *Handler) SendOTP(c *gin.Context){
 	c.JSON(200, gin.H{
 		"message": resp,
 	})
-	
+
 }
 func (h *Handler) UpdateLastLogin(c *gin.Context) {
-	
 
 	var req LastLoginRequest
 	if err := c.ShouldBindJSON(&req); err != nil {

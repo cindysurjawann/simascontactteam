@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"gorm.io/gorm"
 )
 
@@ -52,8 +52,8 @@ func (r *repository) UpdateUser(user model.User, username string) (model.User, e
 
 	res := r.db.Where("username=?", username).Updates(model.User{
 		Email: user.Email,
-		Role: user.Role,
-		Name: user.Name,
+		Role:  user.Role,
+		Name:  user.Name,
 	})
 	if res.Error != nil {
 		return model.User{}, res.Error
@@ -72,5 +72,3 @@ func (r *repository) DeleteUser(id string) (model.User, error) {
 	}
 	return model.User{}, nil
 }
-
-

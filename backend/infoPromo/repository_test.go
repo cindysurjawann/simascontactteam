@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"github.com/glebarez/sqlite"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
@@ -19,14 +19,14 @@ func newTestDB(t *testing.T) *gorm.DB {
 
 	info := []model.InfoPromo{
 		{
-			Judul: "Gebyar Sinarmas",
-			Kategori: "Promo Simobiplus",
+			Judul:     "Gebyar Sinarmas",
+			Kategori:  "Promo Simobiplus",
 			Startdate: "2022-10-20",
-			Enddate: "2022-10-30",
+			Enddate:   "2022-10-30",
 			Kodepromo: "202223",
-			Foto: "test123",	
+			Foto:      "test123",
 			Deskripsi: "Gebyar sinarmas hadir untuk memeriahkan hari kemerdekaan indonesia, ayo join dan gebyarkan indonesia bersama sinarmas dan nikmati keunggulan diskon pembayaran melalui simobiplus",
-			Syarat: "1. Satu rekening hanya bisa melakukan pembayaran satu kali; 2. Satu nomor hp hanya bisa melakukan pembayaran satu kali; 3. Nasabah dapat membuka rekening melalui simobiplus",
+			Syarat:    "1. Satu rekening hanya bisa melakukan pembayaran satu kali; 2. Satu nomor hp hanya bisa melakukan pembayaran satu kali; 3. Nasabah dapat membuka rekening melalui simobiplus",
 		},
 	}
 	err = db.Create(&info).Error
@@ -34,7 +34,7 @@ func newTestDB(t *testing.T) *gorm.DB {
 	return db
 }
 
-func TestGetPromos(t *testing.T){
+func TestGetPromos(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 
@@ -50,7 +50,7 @@ func TestGetPromos(t *testing.T){
 	assert.Equal(t, res, []model.InfoPromo{})
 }
 
-func TestGetRecentPromos(t *testing.T){
+func TestGetRecentPromos(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 
@@ -66,20 +66,20 @@ func TestGetRecentPromos(t *testing.T){
 	assert.Equal(t, res, []model.InfoPromo{})
 }
 
-func TestAddInfo(t *testing.T)()  {
+func TestAddInfo(t *testing.T) {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	service := NewService(repo)
 
 	data := InfoRequest{
-		Judul: "Gebyar Sinarmas",
-		Kategori: "Promo Simobiplus",
+		Judul:     "Gebyar Sinarmas",
+		Kategori:  "Promo Simobiplus",
 		Startdate: "2022-10-20",
-		Enddate: "2022-10-30",
+		Enddate:   "2022-10-30",
 		Kodepromo: "20225	",
-		Foto: "test123",	
+		Foto:      "test123",
 		Deskripsi: "Gebyar sinarmas hadir untuk memeriahkan hari kemerdekaan indonesia, ayo join dan gebyarkan indonesia bersama sinarmas dan nikmati keunggulan diskon pembayaran melalui simobiplus",
-		Syarat: "1. Satu rekening hanya bisa melakukan pembayaran satu kali; 2. Satu nomor hp hanya bisa melakukan pembayaran satu kali; 3. Nasabah dapat membuka rekening melalui simobiplus",
+		Syarat:    "1. Satu rekening hanya bisa melakukan pembayaran satu kali; 2. Satu nomor hp hanya bisa melakukan pembayaran satu kali; 3. Nasabah dapat membuka rekening melalui simobiplus",
 	}
 	res, _, err := service.AddInfo(data)
 	fmt.Println("Gebyar Sinarmas", data.Judul, res, err)

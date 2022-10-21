@@ -1,7 +1,7 @@
 package zoomhistory
 
 import (
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"gorm.io/gorm"
 )
 

@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/model"
 )
 
 type Service interface {
@@ -14,7 +14,6 @@ type Service interface {
 	UpdateUser(data UpdateUserRequest, username string) (model.User, int, error)
 	DeleteUser(id string) (model.User, int, error)
 }
-
 
 type service struct {
 	repo UserRepository
@@ -56,8 +55,8 @@ func (s *service) UpdateUser(data UpdateUserRequest, username string) (model.Use
 
 	user := model.User{
 		Email: data.Email,
-		Role: data.Role,
-		Name: data.Name,
+		Role:  data.Role,
+		Name:  data.Name,
 	}
 
 	res, err := s.repo.UpdateUser(user, username)
@@ -77,5 +76,3 @@ func (s *service) DeleteUser(id string) (model.User, int, error) {
 
 	return user, http.StatusOK, nil
 }
-
-

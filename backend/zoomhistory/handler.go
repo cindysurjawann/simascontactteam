@@ -3,7 +3,7 @@ package zoomhistory
 import (
 	"net/http"
 
-	"github.com/bagasalim/simas/custom"
+	"github.com/cindysurjawann/simascontactteam/custom"
 	"github.com/gin-gonic/gin"
 )
 

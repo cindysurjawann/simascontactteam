@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bagasalim/simas/auth"
-	"github.com/bagasalim/simas/model"
+	"github.com/cindysurjawann/simascontactteam/auth"
+	"github.com/cindysurjawann/simascontactteam/model"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 )
@@ -23,11 +23,11 @@ type resposeLogin struct {
 	Token string            `json:"token"`
 }
 type responseSuccess struct {
-	Message string     `json:"message"`
+	Message string            `json:"message"`
 	Data    []model.InfoPromo `json:"data"`
 }
 
-func initialRepoAuth(t *testing.T) *auth.Handler{
+func initialRepoAuth(t *testing.T) *auth.Handler {
 	db := newTestDB(t)
 	repoUser := auth.NewRepository(db)
 
@@ -36,7 +36,7 @@ func initialRepoAuth(t *testing.T) *auth.Handler{
 	return repoHandler
 }
 
-func initialRepo(t *testing.T) *Handler{
+func initialRepo(t *testing.T) *Handler {
 	db := newTestDB(t)
 	repo := NewRepository(db)
 	service := NewService(repo)
@@ -48,7 +48,7 @@ type ResponseMessage struct {
 	Message string
 }
 
-func getToken(t *testing.T) string{
+func getToken(t *testing.T) string {
 	handler := initialRepoAuth(t)
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
@@ -64,17 +64,17 @@ func getToken(t *testing.T) string{
 	return data.Token
 }
 
-func TestGetRecentHandler(t *testing.T){
+func TestGetRecentHandler(t *testing.T) {
 	handler := initialRepo(t)
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/getrecentpromos", handler.GetRecentInfos)
-	
+
 	//link not found
 	req, _ := http.NewRequest("GET", "/getrecentpromos/wa", nil)
 	w := httptest.NewRecorder()
 	r.ServeHTTP(w, req)
-	resMes:= ResponseMessage{}
+	resMes := ResponseMessage{}
 	assert.Equal(t, 404, w.Code)
 	assert.Error(t, json.Unmarshal(w.Body.Bytes(), &resMes))
 
@@ -87,17 +87,17 @@ func TestGetRecentHandler(t *testing.T){
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &res))
 }
 
-func TestGetHandler(t *testing.T){
+func TestGetHandler(t *testing.T) {
 	handler := initialRepo(t)
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/getpromos", handler.GetInfos)
-	
+
 	//link not found
 	req, _ := http.NewRequest("GET", "/getpromosa/", nil)
 	w := httptest.NewRecorder()
 	r.ServeHTTP(w, req)
-	resMes:= ResponseMessage{}
+	resMes := ResponseMessage{}
 	assert.Equal(t, 404, w.Code)
 	assert.Error(t, json.Unmarshal(w.Body.Bytes(), &resMes))
 
@@ -110,7 +110,7 @@ func TestGetHandler(t *testing.T){
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &res))
 }
 
-func TestAddInfoHandler(t *testing.T){
+func TestAddInfoHandler(t *testing.T) {
 	post := "/postinfopromo"
 	handler := initialRepo(t)
 	gin.SetMode(gin.ReleaseMode)
@@ -124,7 +124,7 @@ func TestAddInfoHandler(t *testing.T){
 	r.ServeHTTP(w, req)
 	assert.NoError(t, err)
 	assert.NotNil(t, req)
-	resMes:= ResponseMessage{}
+	resMes := ResponseMessage{}
 	assert.Equal(t, http.StatusBadRequest, w.Code)
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &resMes))
 
@@ -135,7 +135,7 @@ func TestAddInfoHandler(t *testing.T){
 	assert.NotNil(t, req)
 	w = httptest.NewRecorder()
 	r.ServeHTTP(w, req)
-	res:= responseSuccess{}
+	res := responseSuccess{}
 	assert.Equal(t, http.StatusOK, w.Code)
 	assert.NoError(t, json.Unmarshal(w.Body.Bytes(), &res))
-}  
+}
