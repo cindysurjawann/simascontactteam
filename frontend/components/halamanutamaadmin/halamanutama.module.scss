@@ -1,0 +1,40 @@
+.utama {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  .title {
+    font-size: 30px;
+    font-weight: 400;
+    padding: 10px;
+  }
+  .admincards {
+    margin: auto;
+    min-width: 700px;
+  }
+  .informasi {
+    margin: auto;
+    max-width: 700px;
+  }
+}
+
+.alert {
+  
+  padding: 20px;
+  background-color: #4fb281;
+  color: rgb(0, 0, 0);
+  //animation: hide 3s 3s forwards;
+
+  .closebtn:hover {
+    color: black;
+  }
+  
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}

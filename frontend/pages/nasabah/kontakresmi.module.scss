@@ -1,0 +1,30 @@
+.container {
+  text-decoration: "none";
+  font-size: 20px;
+  font-weight: 700;
+  table {
+    margin: 0 auto;
+    tr {
+      td {
+        a:hover {
+          color: #040404;
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #cc100f;
+  height: 50px;
+  p {
+    font-weight: 700;
+    font-size: 20px;
+    color: #f8f8f8;
+    text-align: center;
+    line-height: 50px;
+  }
+}

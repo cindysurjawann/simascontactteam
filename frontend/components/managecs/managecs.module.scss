@@ -1,0 +1,36 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .buttonHijau {
+    border-radius: 5px;
+    background-color: #52b468;
+    color: white;
+    font-weight: 500;
+    border: 0.25px solid rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+      rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    max-width: 200px;
+    max-height: 200px;
+    font-size: 20px;
+  }
+  
+  .buttonChange {
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border: none;
+  
+    &:active {
+      box-shadow: 5px 2px 5px #52b468;
+    }
+  
+    &:hover {
+      background-color: #7e8a97;
+    }
+  }

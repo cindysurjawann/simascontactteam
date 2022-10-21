@@ -1,0 +1,64 @@
+.zoom {
+  padding-top: 30px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+
+  .inputbox {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    margin: 0 auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+    background-color: #f8f8f8;
+  }
+
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    padding-left: 15%;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  input {
+    min-width: 750px;
+    max-width: 750px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding-left: 15px;
+    border: 0.25px solid rgba(0, 0, 0, 0.15);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    color: black;
+  }
+  input[type="text"]:active,
+  input[type="text"]:focus {
+    outline: 0.25px solid rgba(0, 0, 0, 0.25);
+  }
+
+  .readonly {
+    background-color: #e7e2e2;
+  }
+  .buttonHijau {
+    border-radius: 5px;
+    background-color: #52b468;
+    color: white;
+    font-weight: 500;
+    border: 0.25px solid rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+      rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    min-width: 750px;
+    max-width: 750px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}

@@ -1,0 +1,126 @@
+.jumbotron {
+  display: block;
+  width: 100%;
+  height: 214px;
+}
+.cslaki {
+  display: block;
+  width: 100%;
+  height: 214px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+.imageDummy {
+  width: 100%;
+  height: 250px;
+  justify-content: center;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 10px;
+}
+
+.buttonpa {
+  display: flex;
+  position: relative;
+  margin-top: 38px;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 50px;
+}
+
+.buttonpromo {
+  font-weight: 600;
+  width: 229px;
+  height: 60px;
+  background-color: #ff5050;
+  border-bottom: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 1px solid black;
+  border-radius: 16px 0 0 16px;
+  :active {
+    background-color: #cc100f;
+  }
+}
+
+.buttonpromoActive {
+  font-weight: 600;
+  width: 229px;
+  height: 60px;
+  background-color: #cc100f;
+  border-bottom: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 1px solid black;
+  border-radius: 16px 0 0 16px;
+}
+
+.buttonasuransi {
+  font-weight: 600;
+  width: 229px;
+  height: 60px;
+  background-color: #ff5050;
+  border-bottom: 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 1px solid black;
+  border-radius: 0 16px 16px 0;
+  :active {
+    background-color: #cc100f;
+  }
+}
+
+.buttonasuransiActive {
+  font-weight: 600;
+  width: 229px;
+  height: 60px;
+  background-color: #cc100f;
+  border-bottom: 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 1px solid black;
+  border-radius: 0 16px 16px 0;
+}
+
+.detailContent {
+  height: auto;
+  width: auto;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px;
+  box-shadow: 14px 14px 10px #cbced1, -14px -14px 10px #cbced1;
+  margin-bottom: 50px;
+}
+
+.buttonDetail {
+  margin: 10px 0 10px 10px;
+  width: 95%;
+  background-color: #cc100f;
+  color: #ffffff;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.textContent {
+  text-align: left;
+  margin-left: 10px;
+  padding: 10px 10px 10px 10px;
+  line-height: 1.5;
+  max-width: 100%;
+  max-height: 100%;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
